@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4 # Checks out the repository under $GITHUB_WORKSPACE, so your workflow can access it.
 
       - name: Set up Node.js
-        uses: actions/setup-node@v4 # Updated to use the latest version of the actionjhg
+        uses: actions/setup-node@v4 # Updated to use the latest version of the action
         with:
           node-version: '20.x' # Sets up Node.js version 20
 
@@ -36,7 +36,7 @@ jobs:
           SSH_USER="jetty"
           DO_DROPLET_IP="46.101.113.6"
           APP_NAME="recipeapi"
-          REMOTE_PATH="/home/jetty/2semDockerSetupRemote/site/$APP_NAME/"
+          REMOTE_PATH="/home/jetty/deployment/site/$APP_NAME/"
 
           # Sync build output to the Droplet using rsync
-          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ $SSH_USER@$DO_DROPLET_IP:$REMOTE_PATHÆ
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./dist/ $SSH_USER@$DO_DROPLET_IP:$REMOTE_PATH
